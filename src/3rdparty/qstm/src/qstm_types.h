@@ -9,8 +9,26 @@
 #include <QMutex>
 #include <QMutexLocker>
 
+//!
+//! \brief qTypeId
+//! \param v
+//! \return
+//!
 int qTypeId(const QVariant&v);
+
+//!
+//! \brief qTypeId
+//! \param p
+//! \return
+//!
 int qTypeId(const QMetaProperty&p);
+
+//!
+//! \brief qIsNumeric
+//! \param v
+//! \return
+//!
+bool qIsNumeric(const QVariant&v);
 
 typedef QVector<int> QStmVTypesList;
 
@@ -43,6 +61,8 @@ static const int QMetaType_QUuid        = QMetaType::QUuid         ;
 static const int QMetaType_QVariantHash = QMetaType::QVariantHash  ;
 static const int QMetaType_QVariantList = QMetaType::QVariantList  ;
 static const int QMetaType_QVariantMap  = QMetaType::QVariantMap   ;
+static const int QMetaType_CustomType   = 65538                    ;
+
 
 static const QStmVTypesList QStmTypesListString=QStmVTypesList{QMetaType_QString,QMetaType_QByteArray,QMetaType_QChar,QMetaType_QBitArray};
 static const QStmVTypesList QStmTypesListMetaString=QStmVTypesList{QMetaType_QUuid, QMetaType_QString, QMetaType_QByteArray, QMetaType_QChar, QMetaType_QBitArray};

@@ -1,4 +1,4 @@
-include($$PWD/../qapplicationrunnable.pri)
+include($$PWD/../qapr.pri)
 
 INCLUDEPATH+=$$PWD
 

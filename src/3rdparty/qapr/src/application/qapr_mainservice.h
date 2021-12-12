@@ -2,11 +2,11 @@
 
 #include <QCoreApplication>
 
-#define RPC_APPLICATION_START()\
+#define QAPR_MAIN_DECLARE()\
 int main(int argc, char* argv[])\
 {\
-        QCoreApplication a(argc, argv);\
-        return QApr::MainService(nullptr).exec(a);\
+    QCoreApplication a(argc, argv);\
+    return QApr::MainService(nullptr).exec(a);\
 }
 
 namespace QApr{

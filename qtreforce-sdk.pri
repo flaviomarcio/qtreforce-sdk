@@ -6,3 +6,7 @@ include($$PWD/src/3rdparty/qstm/qstm.pri)
 include($$PWD/src/3rdparty/qrpc/qrpc.pri)
 include($$PWD/src/3rdparty/qorm/qorm.pri)
 include($$PWD/src/3rdparty/qapr/qapr.pri)
+
+
+HEADERS+= \
+    $$PWD/src/QtReforceInclude

@@ -11,12 +11,12 @@ namespace QApr{
 
     TEST_F(Q_APR_VariantUtilTestUnit, serviceStart)
     {
-        EXPECT_EQ(this->serviceStart(),true)<<"fail: service start";
+        EXPECT_TRUE(this->serviceStart())<<"fail: service start";
     }
 
     TEST_F(Q_APR_VariantUtilTestUnit, serviceStop)
     {
-        EXPECT_EQ(this->serviceStop(),true)<<"fail: service stop";
+        EXPECT_TRUE(this->serviceStop())<<"fail: service stop";
     }
 
 }

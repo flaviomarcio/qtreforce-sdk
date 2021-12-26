@@ -23,15 +23,19 @@ public:
 
     QOrm::ConnectionNotify connectionNotify;
 
-    explicit NotifyPvt(Notify*parent) : QObject(parent), notify(parent){
+    explicit NotifyPvt(Notify*parent) : QObject(parent), notify(parent)
+    {
         QObject::connect(&connectionNotify, &QOrm::ConnectionNotify::notification, this, &NotifyPvt::taskReceived);
 
     }
-    virtual ~NotifyPvt(){
+
+    virtual ~NotifyPvt()
+    {
     }
 
 
-    void taskRun(const QByteArray&service){
+    void taskRun(const QByteArray&service)
+    {
         auto task = this->tasks.value(service);
         if(task==nullptr){
             auto metaObject=this->services.value(service);
@@ -66,7 +70,8 @@ public:
 
     }
 
-    bool taskStart(){
+    bool taskStart()
+    {
         if(this->connectionNotify.start()){
             QMutexLocker locker(&mutexNotify);
             QHashIterator<QByteArray, const QMetaObject*> i(this->services);
@@ -80,7 +85,8 @@ public:
         return false;
     }
 
-    void taskFinish(){
+    void taskFinish()
+    {
         for(auto&v:tasks){
             v->quit();
             if(v->wait(1000))
@@ -90,7 +96,8 @@ public:
         }
     }
 
-    NotifyDispatch&taskRegister(const QMetaObject&metaObject, const QByteArray &methodName){
+    NotifyDispatch&taskRegister(const QMetaObject&metaObject, const QByteArray &methodName)
+    {
         auto mthName=methodName.trimmed();
         if(!mthName.isEmpty()){
             auto mtdMd5=QCryptographicHash::hash(mthName, QCryptographicHash::Md5).toHex();
@@ -100,21 +107,22 @@ public:
             this->dispatchers.insert(dispatch->channel(), dispatch);
             return*dispatch;
         }
-        static NotifyDispatch __NotifyDispatch;
-        __NotifyDispatch.clear();
-        return __NotifyDispatch;
+        static NotifyDispatch __notifyDispatch;
+        __notifyDispatch.clear();
+        return __notifyDispatch;
     }
 
-    bool taskNotify(const QString &channel, const QVariant &payload){
+    bool taskNotify(const QString &channel, const QVariant &payload)
+    {
         return connectionNotify.notify_send(channel, payload);
     }
 
-    void taskReceived(const QString &channel, const QVariant &payload){
+    void taskReceived(const QString &channel, const QVariant &payload)
+    {
         auto name=channel.toUtf8();
         auto service=this->tasks.value(name);
-        if(service!=nullptr){
+        if(service!=nullptr)
             emit service->notifyReceived(channel, payload);
-        }
     }
 };
 

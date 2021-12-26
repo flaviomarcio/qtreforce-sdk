@@ -38,14 +38,15 @@ static void init(Application&i){
 }
 
 static void init(){
-    if(____instance==nullptr){
-        static QMutex ____instance_mutex;
-        QMutexLocker locker(&____instance_mutex);/*garantia de unica instancia*/
-        if(____instance==nullptr){
-            ____instance=new Application(nullptr);
-            init(*____instance);
-        }
-    }
+    if(____instance!=nullptr)
+        return;
+
+    static QMutex ____instance_mutex;
+    QMutexLocker locker(&____instance_mutex);/*garantia de unica instancia*/
+    if(____instance!=nullptr)
+        return;
+    ____instance=new Application(nullptr);
+    init(*____instance);
 }
 
 Q_COREAPP_STARTUP_FUNCTION(init)
@@ -100,23 +101,25 @@ qlonglong Application::memoryUsage()
 {
     QProcess process;
     process.start(qsl("cat"), qvsl_null<<qsl("/proc/%1/status").arg(qApp->applicationPid()));
-    if(process.waitForStarted(1000)){
-        if(!process.waitForFinished(1000)){
-            process.terminate();
-        }
-        else{
-            QString bytes=process.readAllStandardOutput().toLower();
-            bytes=bytes.replace(qsl("\t"), qsl_null);
-            while(bytes.contains(qsl("  ")))
-                   bytes=bytes.replace(qsl("  "), qsl_space);
-            auto vList=bytes.split(qsl("\n"));
-            for(auto&s:vList){
-                if(s.contains(qsl_fy(vmpeak))){
-                    auto vmRSS=s.split(qsl(":")).last().trimmed().replace(qsl("kb"),qsl_null).trimmed();
-                    return vmRSS.toLongLong();
-                }
-            }
-        }
+    if(!process.waitForStarted(1000)){
+        return 0;
+    }
+
+    if(!process.waitForFinished(1000)){
+        process.terminate();
+        return 0;
+    }
+
+    QString bytes=process.readAllStandardOutput().toLower();
+    bytes=bytes.replace(qsl("\t"), qsl_null);
+    while(bytes.contains(qsl("  ")))
+        bytes=bytes.replace(qsl("  "), qsl_space);
+    auto vList=bytes.split(qsl("\n"));
+    for(auto&s:vList){
+        if(!s.contains(qsl_fy(vmpeak)))
+            continue;
+        auto vmRSS=s.split(qsl(":")).last().trimmed().replace(qsl("kb"),qsl_null).trimmed();
+        return vmRSS.toLongLong();
     }
     return 0;
 }

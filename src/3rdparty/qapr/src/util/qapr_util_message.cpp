@@ -5,11 +5,8 @@
 
 namespace QApr {
 
-//enum MessageType{dsMail=1, dsSms=2, dsPushNotification=4, dsTelegram=8, dsWhatsApp=16};
-
-
-static bool sendMessage(const QRpc::ServiceSetting &setting, const QVariant&vMsg){
-
+static bool sendMessage(const QRpc::ServiceSetting &setting, const QVariant&vMsg)
+{
     QRpc::QRPCRequest request;
     request=setting;
     QVariantHash map;
@@ -46,7 +43,8 @@ static bool sendMessage(const QRpc::ServiceSetting &setting, const QVariant&vMsg
     return response.isOk();
 }
 
-static bool sendMessage(const QRpc::ServiceSetting &setting, const QByteArray&serviceToken, const QString&type, const QString&to, const QString&payload, const QVariantList&attachment, QVariant&responseBody){
+static bool sendMessage(const QRpc::ServiceSetting &setting, const QByteArray&serviceToken, const QString&type, const QString&to, const QString&payload, const QVariantList&attachment, QVariant&responseBody)
+{
     auto base=qsl("%1%2").arg(__PRETTY_FUNCTION__, QDateTime::currentDateTime().toString()).toUtf8();
     auto uuid=QUuid::createUuidV3(QUuid::createUuid(),base);
     QRpc::QRPCRequest request;
@@ -85,8 +83,7 @@ ResultValue &UtilMessage::send(const QRpc::ServiceSetting &setting, const QByteA
     QVariant response;
     if(!sendMessage(setting, serviceType, serviceToken, to, body, attachment, response))
         return this->lr().setCritical("No send sms message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendSMS(const QRpc::ServiceSetting &setting, const QByteArray &serviceToken, const QString &to, const QString &body)
@@ -94,8 +91,7 @@ ResultValue &UtilMessage::sendSMS(const QRpc::ServiceSetting &setting, const QBy
     QVariant response;
     if(!sendMessage(setting, serviceToken, qsl("sms"), to, body, QVariantList(), response))
         return this->lr().setCritical("No send sms message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendPushNotify(const QRpc::ServiceSetting &setting, const QByteArray &serviceToken, const QString &to, const QString &body)
@@ -103,8 +99,7 @@ ResultValue &UtilMessage::sendPushNotify(const QRpc::ServiceSetting &setting, co
     QVariant response;
     if(!sendMessage(setting, serviceToken, qsl("pushnotification"), to, body, QVariantList(), response))
         return this->lr().setCritical("No send push notification");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendTelegram(const QRpc::ServiceSetting &setting, const QByteArray &serviceToken, const QString &to, const QString &body)
@@ -112,8 +107,7 @@ ResultValue &UtilMessage::sendTelegram(const QRpc::ServiceSetting &setting, cons
     QVariant response;
     if(!sendMessage(setting, serviceToken, qsl("telegram"), to, body, QVariantList(), response))
         return this->lr().setCritical("No send telegram message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendEmail(const QRpc::ServiceSetting &setting, const QByteArray &serviceToken, const QString &to, const QString &body)
@@ -121,8 +115,7 @@ ResultValue &UtilMessage::sendEmail(const QRpc::ServiceSetting &setting, const Q
     QVariant response;
     if(!sendMessage(setting, serviceToken, qsl("email"), to, body, QVariantList(), response))
         return this->lr().setCritical("No send email");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendWhatsApp(const QRpc::ServiceSetting &setting, const QByteArray &serviceToken, const QString &to, const QString &body)
@@ -130,16 +123,14 @@ ResultValue &UtilMessage::sendWhatsApp(const QRpc::ServiceSetting &setting, cons
     QVariant response;
     if(!sendMessage(setting, serviceToken, qsl("whatsapp"), to, body, QVariantList(), response))
         return this->lr().setCritical("No send whatsapp message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::send(const QRpc::ServiceSetting &setting, const QVariant&message)
 {
     if(!sendMessage(setting, message))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendSMS(const QRpc::ServiceSetting &setting, const QVariant&message)
@@ -147,8 +138,7 @@ ResultValue &UtilMessage::sendSMS(const QRpc::ServiceSetting &setting, const QVa
     QStm::Message msg(message);
     if(!sendMessage(setting, msg.setType(qsl("sms"))))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendPushNotify(const QRpc::ServiceSetting &setting, const QVariant&message)
@@ -156,8 +146,7 @@ ResultValue &UtilMessage::sendPushNotify(const QRpc::ServiceSetting &setting, co
     QStm::Message msg(message);
     if(!sendMessage(setting, msg.setType(qsl("PushNotify"))))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendTelegram(const QRpc::ServiceSetting &setting, const QVariant&message)
@@ -165,8 +154,7 @@ ResultValue &UtilMessage::sendTelegram(const QRpc::ServiceSetting &setting, cons
     QStm::Message msg(message);
     if(!sendMessage(setting, msg.setType(qsl("telegram"))))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendEmail(const QRpc::ServiceSetting &setting, const QVariant&message)
@@ -174,8 +162,7 @@ ResultValue &UtilMessage::sendEmail(const QRpc::ServiceSetting &setting, const Q
     QStm::Message msg(message);
     if(!sendMessage(setting, msg.setType(qsl("email"))))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 ResultValue &UtilMessage::sendWhatsApp(const QRpc::ServiceSetting &setting, const QVariant&message)
@@ -183,8 +170,7 @@ ResultValue &UtilMessage::sendWhatsApp(const QRpc::ServiceSetting &setting, cons
     QStm::Message msg(message);
     if(!sendMessage(setting, msg.setType(qsl("whatsApp"))))
         return this->lr().setCritical("No send message");
-    else
-        return this->lr();
+    return this->lr();
 }
 
 }

@@ -3,48 +3,48 @@
 
 namespace QApr {
 
-    QCoreApplication &Runnable::a()
-    {
-        return*QCoreApplication::instance();
-    }
+QCoreApplication &Runnable::a()
+{
+    return*QCoreApplication::instance();
+}
 
-    Runnable::Runnable(QObject *parent):QObject(parent)
-    {
-    }
+Runnable::Runnable(QObject *parent):QObject(parent)
+{
+}
 
-    Runnable::~Runnable()
-    {
-    }
+Runnable::~Runnable()
+{
+}
 
-    int Runnable::run()
-    {
-        return QProcess::NormalExit;
-    }
+int Runnable::run()
+{
+    return QProcess::NormalExit;
+}
 
-    bool Runnable::resoucesInitialize()
-    {
-        return true;
-    }
+bool Runnable::resoucesInitialize()
+{
+    return true;
+}
 
-    bool Runnable::settingInitialize()
-    {
-        return true;
-    }
+bool Runnable::settingInitialize()
+{
+    return true;
+}
 
-    bool Runnable::serviceSecondPlanInitialize()
-    {
-        return true;
-    }
+bool Runnable::serviceSecondPlanInitialize()
+{
+    return true;
+}
 
-    bool Runnable::serviceFirstPlanInitialize()
-    {
-        return true;
-    }
+bool Runnable::serviceFirstPlanInitialize()
+{
+    return true;
+}
 
-    bool Runnable::serviceGUIInitialize()
-    {
-        return true;
-    }
+bool Runnable::serviceGUIInitialize()
+{
+    return true;
+}
 
 }
 

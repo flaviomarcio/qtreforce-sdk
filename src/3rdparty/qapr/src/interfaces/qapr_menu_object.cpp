@@ -175,13 +175,27 @@ QVariantList MenuObject::menu()const
 MenuObject &MenuObject::menu(const QVariant&v)
 {
     dPvt();
-    if(qTypeId(v)==QMetaType_QVariantList){
-        for(auto&v:v.toList())
-            if(qTypeId(v)==QMetaType_QVariantMap || qTypeId(v)==QMetaType_QVariantHash)
+    switch (qTypeId(v)) {
+    case QMetaType_QVariantList:
+    {
+        for(auto&v:v.toList()){
+            switch (qTypeId(v)) {
+            case QMetaType_QVariantMap:
+            case QMetaType_QVariantHash:
                 p.menuAdd(v.toMap());
+                break;
+            default:
+                break;
+            }
+        }
+        break;
     }
-    else if(qTypeId(v)==QMetaType_QVariantMap || qTypeId(v)==QMetaType_QVariantHash){
+    case QMetaType_QVariantMap:
+    case QMetaType_QVariantHash:
         p.menuAdd(v.toMap());
+        break;
+    default:
+        break;
     }
     return*this;
 }
@@ -204,19 +218,31 @@ QVariantList MenuObject::permission() const
 
 MenuObject &MenuObject::permission(const QVariant &v)
 {
-    if(v.isValid()){
-        dPvt();
-        if(qTypeId(v)==QMetaType_QVariantList){
-            for(auto&v:v.toList()){
-                if(qTypeId(v)==QMetaType_QVariantMap || qTypeId(v)==QMetaType_QVariantHash)
-                    this->menu(v);
+    dPvt();
+    switch (qTypeId(v)) {
+    case QMetaType_QVariantList:
+    {
+        for(auto&v:v.toList()){
+            switch (qTypeId(v)) {
+            case QMetaType_QVariantMap:
+            case QMetaType_QVariantHash:
+                this->menu(v);
+                break;
+            default:
+                break;
             }
         }
-        else if(qTypeId(v)==QMetaType_QVariantMap || qTypeId(v)==QMetaType_QVariantHash){
-            p.permissionAdd(v);
-        }
+        break;
+    }
+    case QMetaType_QVariantMap:
+    case QMetaType_QVariantHash:
+        p.permissionAdd(v);
+        break;
+    default:
+        break;
     }
     return*this;
+
 }
 
 QVariantHash MenuObject::toHash()const

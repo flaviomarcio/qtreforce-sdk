@@ -12,17 +12,18 @@ namespace QStm {
 //! \brief The ResultInfo class
 //!
 //! class page navigator
-class Q_STM_EXPORT ResultInfo:public QObject{
+class Q_STM_EXPORT ResultInfo:public QObject
+{
     Q_OBJECT
 
-    Q_PROPERTY(QVariantList errors      READ errors      WRITE setErrors      )
-    Q_PROPERTY(QVariantList messages    READ messages    WRITE setMessages    )
-    Q_PROPERTY(bool         success     READ success     WRITE setSuccess     )
-    Q_PROPERTY(int          page        READ page        WRITE setPage        )
-    Q_PROPERTY(int          per_page    READ per_page    WRITE setPer_page    )
-    Q_PROPERTY(int          count       READ count       WRITE setCount       )
-    Q_PROPERTY(int          total_count READ total_count WRITE setTotal_count )
-    Q_PROPERTY(int          total_pages READ total_pages WRITE setTotal_pages )
+    Q_PROPERTY(QVariantList errors READ errors WRITE setErrors)
+    Q_PROPERTY(QVariantList messages READ messages WRITE setMessages)
+    Q_PROPERTY(bool success READ success WRITE setSuccess)
+    Q_PROPERTY(int page READ page WRITE setPage)
+    Q_PROPERTY(int per_page READ per_page WRITE setPer_page)
+    Q_PROPERTY(int count READ count WRITE setCount)
+    Q_PROPERTY(int total_count READ total_count WRITE setTotal_count)
+    Q_PROPERTY(int total_pages READ total_pages WRITE setTotal_pages)
 
 public:
     //!

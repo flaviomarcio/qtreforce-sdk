@@ -14,7 +14,8 @@ static void qtMessageHandlerCustomized(QtMsgType type, const QMessageLogContext 
     fprintf(stderr, QByteArrayLiteral("%s\n"), message.toUtf8().constData());
 }
 
-static void init(){
+static void init()
+{
     QApr::Log::enabled();
 }
 

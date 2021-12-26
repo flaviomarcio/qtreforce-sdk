@@ -27,14 +27,17 @@ public:
     SettingManager*parent=nullptr;
     QObject*parentParent=nullptr;
 
-    explicit SettingManagerPrv(SettingManager*parent):settingsDefault(parent){
+    explicit SettingManagerPrv(SettingManager*parent):settingsDefault(parent)
+    {
         this->parent=parent;
     }
-    virtual ~SettingManagerPrv(){
+    virtual ~SettingManagerPrv()
+    {
         this->clear();
     }
 
-    bool isLoaded(){
+    bool isLoaded()
+    {
         QHashIterator<QString, SettingBase*> i(this->settings);
         while (i.hasNext()) {
             i.next();
@@ -49,7 +52,8 @@ public:
         return false;
     }
 
-    bool isEmpty(){
+    bool isEmpty()
+    {
         QHashIterator<QString, SettingBase*> i(this->settings);
         while (i.hasNext()) {
             i.next();
@@ -60,13 +64,15 @@ public:
         return true;
     }
 
-    void clear(){
+    void clear()
+    {
         auto _detail=this->settings.values();
         this->settings.clear();
         qDeleteAll(_detail);
     }
 
-    QVariantHash toHash(){
+    QVariantHash toHash()
+    {
         QVariantHash map, vServices;
         auto vList=QList<SettingBase*>()<<&this->settingsDefault;
         vList=vList+this->settings.values();
@@ -77,13 +83,15 @@ public:
         return map;
     }
 
-    QByteArray settingNameAdjust(const QString&settingName){
+    QByteArray settingNameAdjust(const QString&settingName)
+    {
         auto setting=settingName.trimmed();
         return setting.toUtf8();
     }
 
 
-    SettingBase&settingGetCheck(const QByteArray&settingName){
+    SettingBase&settingGetCheck(const QByteArray&settingName)
+    {
         auto name=this->settingNameAdjust(settingName);
         auto ___return=settings.value(name);
         if(___return==nullptr){
@@ -93,7 +101,8 @@ public:
         return*___return;
     }
 
-    SettingBase*settingCreate(QObject*parent){
+    SettingBase*settingCreate(QObject*parent)
+    {
         auto object=this->parent->settingCreate(parent);
         if(object!=nullptr){
             auto setting=dynamic_cast<SettingBase*>(object);
@@ -108,27 +117,28 @@ public:
     {
         auto&p=*this;
         QVariantHash vValue=value;
-        if(!vValue.isEmpty()){
-            auto name=vValue.value(qsl("name")).toByteArray().trimmed();
-            if(!name.isEmpty()){
-                auto setting=p.settings.value(name);
-                if(setting!=nullptr)
-                    setting->deleteLater();
+        if(vValue.isEmpty())
+            return*this->parent;
+        auto name=vValue.value(qsl("name")).toByteArray().trimmed();
+        if(name.isEmpty())
+            return*this->parent;
 
-                static auto l=QStringList{QT_STRINGIFY2(activityLimit),QT_STRINGIFY2(activityInterval)};
-                for(auto&property:l){
-                    auto v=vValue.value(property);
-                    if(v.isValid() && v.toLongLong()<=0){
-                        v=SettingBase::parseInterval(v);
-                        vValue[property]=v;
-                    }
-                }
-                setting=this->settingCreate(this->parent);
-                setting->fromHash(vValue);
-                setting->setName(name);
-                p.settings.insert(setting->name(), setting);
+        auto setting=p.settings.value(name);
+        if(setting!=nullptr)
+            setting->deleteLater();
+
+        static auto l=QStringList{QT_STRINGIFY2(activityLimit),QT_STRINGIFY2(activityInterval)};
+        for(auto&property:l){
+            auto v=vValue.value(property);
+            if(v.isValid() && v.toLongLong()<=0){
+                v=SettingBase::parseInterval(v);
+                vValue[property]=v;
             }
         }
+        setting=this->settingCreate(this->parent);
+        setting->fromHash(vValue);
+        setting->setName(name);
+        p.settings.insert(setting->name(), setting);
         return*this->parent;
     }
 
@@ -295,14 +305,15 @@ public:
             else
                 this->variables[qsl("arguments")]=varguments;
 
-            if(qTypeId(varguments)==QMetaType_QVariantHash || qTypeId(varguments)==QMetaType_QVariantMap){
+            auto typeId=qTypeId(varguments);
+            if(typeId==QMetaType_QVariantHash || typeId==QMetaType_QVariantMap){
                 QHashIterator<QString, QVariant> i(varguments.toHash());
                 while (i.hasNext()) {
                     i.next();
                     arguments.insert(i.key().toLower(), i.value());
                 }
             }
-            else if(qTypeId(varguments)==QMetaType_QVariantList || qTypeId(varguments)==QMetaType_QStringList){
+            else if(typeId==QMetaType_QVariantList || typeId==QMetaType_QStringList){
                 for(auto&v:varguments.toList()){
                     auto l=v.toString().split(qsl("="));
                     if(l.isEmpty())
@@ -312,12 +323,12 @@ public:
                         auto key=l.first();
                         auto value=l.last();
                         arguments.insert(key,value);
+                        continue;
                     }
-                    else{
-                        auto key=l.first().toLower();
-                        auto value=l.last();
-                        arguments.insert(key,value);
-                    }
+
+                    auto key=l.first().toLower();
+                    auto value=l.last();
+                    arguments.insert(key,value);
                 }
             }
             this->parent->setArguments(arguments);

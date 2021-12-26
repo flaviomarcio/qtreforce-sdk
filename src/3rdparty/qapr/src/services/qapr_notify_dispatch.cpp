@@ -13,7 +13,7 @@ public:
     QByteArray channel;
     QByteArray md5;
     NotifyDispatch*parent=nullptr;
-    VariantUtil vu;
+    Q_DECLARE_VU;
     explicit NotifyDispatchPvt(NotifyDispatch*parent=nullptr)//:QObject(parent)
     {
         this->parent=parent;

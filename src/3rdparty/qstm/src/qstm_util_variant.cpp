@@ -649,7 +649,9 @@ const QUuid VariantUtil::toMd5Uuid(const QVariant &v)
 QVVM VariantUtil::toVVM() const
 {
     dPvt();
-    return p.vvm;
+    auto vvm=p.vvm;
+    p.clear();
+    return vvm;
 }
 
 const QVVM VariantUtil::toVVM(const QVariant &v)
@@ -1029,8 +1031,7 @@ const QUuid VariantUtil::toUuidCompuser(const QVariant &value)
 
     for(auto&v:compuserValues){
         QString text;
-        auto typeId=qTypeId(v);
-        switch (typeId) {
+        switch (qTypeId(v)) {
         case QMetaType_QUuid:
             text=v.toUuid().toString().toLower().replace(qsl("{"), qsl_null).replace(qsl("}"), qsl_null).replace(qsl("-"), qsl_null);
             break;
@@ -1038,14 +1039,8 @@ const QUuid VariantUtil::toUuidCompuser(const QVariant &value)
             text=v.toUrl().toString().toLower().toUtf8();
             break;
         case QMetaType_Int:
-            text=QString::number(v.toLongLong(),0).toUtf8();
-            break;
         case QMetaType_UInt:
-            text=QString::number(v.toLongLong(),0).toUtf8();
-            break;
         case QMetaType_LongLong:
-            text=QString::number(v.toLongLong(),0).toUtf8();
-            break;
         case QMetaType_ULongLong:
             text=QString::number(v.toLongLong(),0).toUtf8();
             break;
@@ -1061,12 +1056,15 @@ const QUuid VariantUtil::toUuidCompuser(const QVariant &value)
         case QMetaType_QDateTime:
             text=v.toDateTime().toString(Qt::ISODateWithMs).toUtf8();
             break;
+        case QMetaType_QVariantHash:
+        case QMetaType_QVariantMap:
+        case QMetaType_QVariantList:
+        case QMetaType_QStringList:
+            text=QJsonDocument::fromVariant(v).toJson(QJsonDocument::Compact);
+            break;
         default:
-            if(QStmTypesObjectMetaData.contains(typeId)){
-                text=QJsonDocument::fromVariant(v).toJson(QJsonDocument::Compact);
-                break;
-            }
             text=v.toByteArray();
+            break;
         }
         text=text.trimmed();
         if(text.isEmpty())
@@ -1144,29 +1142,20 @@ bool VariantUtil::vIsEmpty(const QVariant &v)
     case QMetaType_QUrl:
         return vv.toUrl().isEmpty();
     case QMetaType_QString:
-        return vv.toByteArray().trimmed().isEmpty();
     case QMetaType_QByteArray:
-        return vv.toByteArray().trimmed().isEmpty();
     case QMetaType_QBitArray:
-        return vv.toByteArray().trimmed().isEmpty();
     case QMetaType_QChar:
         return vv.toByteArray().trimmed().isEmpty();
     case QMetaType_QVariantMap:
-        return vv.toMap().isEmpty();
     case QMetaType_QVariantHash:
         return vv.toHash().isEmpty();
     case QMetaType_QVariantList:
-        return vv.toList().isEmpty();
     case QMetaType_QStringList:
-        return vv.toStringList().isEmpty();
+        return vv.toList().isEmpty();
     case QMetaType_Int:
-        return vv.toDouble()==0;
     case QMetaType_UInt:
-        return vv.toDouble()==0;
     case QMetaType_LongLong:
-        return vv.toDouble()==0;
     case QMetaType_ULongLong:
-        return vv.toDouble()==0;
     case QMetaType_Double:
         return vv.toDouble()==0;
     case QMetaType_QDate:
@@ -1231,11 +1220,9 @@ QVariant VariantUtil::convertTo(const QVariant &v, int typeId)
     case QMetaType_QUuid:
         return vu.toUuid();
     case QMetaType_Int:
-        return vu.toInt();
     case QMetaType_UInt:
         return vu.toInt();
     case QMetaType_LongLong:
-        return vu.toLongLong();
     case QMetaType_ULongLong:
         return vu.toLongLong();
     case QMetaType_QDateTime:

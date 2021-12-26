@@ -11,10 +11,12 @@ namespace QApr {
 
 class ServerPvt{
 public:
-    explicit ServerPvt(Server*parent=nullptr){
+    explicit ServerPvt(Server*parent=nullptr)
+    {
         Q_UNUSED(parent)
     }
-    virtual ~ServerPvt(){
+    virtual ~ServerPvt()
+    {
     }
 };
 

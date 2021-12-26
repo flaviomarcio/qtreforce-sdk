@@ -16,4 +16,5 @@ QT -= qml qmldebug
 LIBS += -L/usr/local/lib -lgmock
 LIBS += -L/usr/local/lib -lgtest
 
-SOURCES += $$PWD/test/main.cpp
+SOURCES += \
+    $$PWD/src/test/main.cpp

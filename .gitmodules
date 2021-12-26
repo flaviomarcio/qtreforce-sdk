@@ -13,3 +13,9 @@
 [submodule "src/3rdparty/qrpc"]
 	path = src/3rdparty/qrpc
 	url = git@github.com:flaviomarcio/qrpc.git
+[submodule "src/3rdparty/qtokenutil"]
+	path = src/3rdparty/qtokenutil
+	url = git@github.com:flaviomarcio/qtokenutil.git
+[submodule "src/3rdparty/qjsonwebtoken"]
+	path = src/3rdparty/qjsonwebtoken
+	url = git@github.com:flaviomarcio/qjsonwebtoken.git

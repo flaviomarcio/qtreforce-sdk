@@ -1,8 +1,8 @@
 #include "./qapr_mainservice.h"
 #include "./qapr_application.h"
-#include "./qapr_server.h"
-#include "./qapr_agent.h"
-#include "./qapr_notify.h"
+#include "../services/qapr_server.h"
+#include "../services/qapr_agent.h"
+#include "../services/qapr_notify.h"
 #include <QProcess>
 #include <QDir>
 

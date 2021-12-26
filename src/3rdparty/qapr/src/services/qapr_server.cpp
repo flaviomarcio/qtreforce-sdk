@@ -1,5 +1,5 @@
 #include "./qapr_server.h"
-#include "./qapr_application.h"
+#include "../application/qapr_application.h"
 #include <QCoreApplication>
 #include <QFile>
 #include <QMutex>

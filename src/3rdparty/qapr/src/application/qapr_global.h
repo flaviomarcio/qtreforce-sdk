@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./qstm_macro.h"
+#include "../../qstm/src/qstm_macro.h"
 
 #ifndef QT_STATIC
 #  if defined(QT_BUILD_SQL_LIB)

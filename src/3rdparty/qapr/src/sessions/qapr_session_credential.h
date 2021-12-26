@@ -2,8 +2,8 @@
 
 #include <QUuid>
 #include <QVariantHash>
-#include "./qapr_global.h"
-#include "./qstm_object.h"
+#include "../application/qapr_global.h"
+#include "../../qstm/src/qstm_object.h"
 
 namespace QApr {
 

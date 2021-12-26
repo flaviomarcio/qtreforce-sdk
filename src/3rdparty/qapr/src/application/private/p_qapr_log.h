@@ -12,7 +12,7 @@ namespace QApr {
 //! \brief makeQtMsgTypeMap
 //! \return
 //!
-static const QHash<int,QString>&makeQtMsgTypeMap();
+const QHash<int,QString>&makeQtMsgTypeMap();
 
 //!
 //! \brief qtMessageHandlerDefault

@@ -1,6 +1,6 @@
 #include "./qapr_notify_dispatch.h"
 #include "./qapr_notify.h"
-#include "./qstm_util_variant.h"
+#include "../../qstm/src/qstm_util_variant.h"
 
 namespace QApr {
 

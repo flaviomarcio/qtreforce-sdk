@@ -13,7 +13,7 @@
 #include <gtest/gtest.h>
 #include "./qrpc_types.h"
 #include "./qrpc_request.h"
-#include "./qstm_util_variant.h"
+#include "../../qstm/src/qstm_util_variant.h"
 #include "./qapr_server.h"
 #include "./qrpc_listen_protocol.h"
 

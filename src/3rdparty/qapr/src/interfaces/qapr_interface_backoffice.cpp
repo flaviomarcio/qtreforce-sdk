@@ -1,8 +1,7 @@
 #include "./qapr_interface_backoffice.h"
-#include "./qapr_controller_backoffice.h"
-#include "./qapr_application.h"
-#include "./qorm_transaction.h"
-
+#include "../mvc/qapr_controller_backoffice.h"
+#include "./application/qapr_application.h"
+#include "../../qorm/src/qorm_transaction.h"
 
 namespace QApr {
 

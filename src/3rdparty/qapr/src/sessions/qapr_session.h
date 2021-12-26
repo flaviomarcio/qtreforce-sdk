@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./qapr_global.h"
+#include "../application/qapr_global.h"
 #include "./qapr_session_credential.h"
 #include <QMutex>
 #include <QThread>

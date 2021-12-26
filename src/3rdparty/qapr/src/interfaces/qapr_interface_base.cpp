@@ -1,5 +1,5 @@
 #include "./qapr_interface_base.h"
-#include "./qapr_application.h"
+#include "../application/qapr_application.h"
 
 namespace QApr {
 

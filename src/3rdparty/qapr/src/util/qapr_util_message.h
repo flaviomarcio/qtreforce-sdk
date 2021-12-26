@@ -1,9 +1,9 @@
 #pragma once
 
-#include "./qapr_global.h"
-#include "./qstm_message.h"
-#include "./qorm_controller.h"
-#include "./qrpc_service_setting.h"
+#include "../application/qapr_global.h"
+#include "../../qstm/src/qstm_message.h"
+#include "../../qorm/src/qorm_controller.h"
+#include "../../qrpc/src/qrpc_service_setting.h"
 
 namespace QApr {
 

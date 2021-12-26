@@ -1,6 +1,6 @@
 #include "./qapr_notify_base.h"
 #include "./qapr_notify.h"
-#include "./qapr_application.h"
+#include "../application/qapr_application.h"
 #include <QTimer>
 #include <QCryptographicHash>
 #include <QVariant>
@@ -16,7 +16,8 @@ class NotifyBasePvt:public QObject{
 public:
     NotifyBase*parent=nullptr;
     VariantUtil vu;
-    explicit NotifyBasePvt(NotifyBase*parent=nullptr):QObject(parent){
+    explicit NotifyBasePvt(NotifyBase*parent=nullptr):QObject(parent)
+    {
         this->parent=parent;
     }
 };

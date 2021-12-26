@@ -1,7 +1,7 @@
 #include "./qapr_controller.h"
-#include "./qapr_interface_database.h"
-#include "./qapr_application.h"
-#include "./qrpc_controller.h"
+#include "../interfaces/qapr_interface_database.h"
+#include "../application/qapr_application.h"
+#include "../../qrpc/src/qrpc_controller.h"
 
 namespace QApr {
 
@@ -13,13 +13,16 @@ public:
     Controller*parent=nullptr;
     InterfaceDatabase*request_=nullptr;
     QVariantHash accountModel;
-    explicit ControllerPvt(Controller*parent){
+    explicit ControllerPvt(Controller*parent)
+    {
         this->parent=parent;
     }
-    virtual ~ControllerPvt(){
+    virtual ~ControllerPvt()
+    {
     }
 
-    InterfaceDatabase*request(){
+    InterfaceDatabase*request()
+    {
         if(this->request_==nullptr){
             QObject*__parent=this->parent;
             while(__parent!=nullptr){

@@ -31,6 +31,14 @@ set(qapr_SRCS
 
 )
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src/application)
+include_directories(${CMAKE_SOURCE_DIR}/src/interfaces)
+include_directories(${CMAKE_SOURCE_DIR}/src/mvc)
+include_directories(${CMAKE_SOURCE_DIR}/src/services)
+include_directories(${CMAKE_SOURCE_DIR}/src/sessions)
+include_directories(${CMAKE_SOURCE_DIR}/src/util)
+
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     add_library(qapr STATIC ${qapr_SRCS})
 else()

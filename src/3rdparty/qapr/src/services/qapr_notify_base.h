@@ -4,11 +4,10 @@
 #include <QThread>
 #include <QMap>
 #include <QVariant>
-#include "./qrpc_service_manager.h"
-#include "./qrpc_service_setting.h"
-#include "./qapr_consts.h"
-#include "./qapr_consts.h"
-#include "./qorm_connection_manager.h"
+#include "../application/qapr_consts.h"
+#include "../../../qrpc/src/qrpc_service_manager.h"
+#include "../../../qrpc/src/qrpc_service_setting.h"
+#include "../../../qorm/src/qorm_connection_manager.h"
 
 namespace QApr {
 

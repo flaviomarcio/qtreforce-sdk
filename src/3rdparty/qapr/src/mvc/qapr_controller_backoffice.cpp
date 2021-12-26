@@ -1,6 +1,6 @@
 #include "./qapr_controller_backoffice.h"
-#include "./qrpc_controller.h"
-#include "./qapr_interface.h"
+#include "../interfaces/qapr_interface.h"
+#include "../../qrpc/src/qrpc_controller.h"
 
 namespace QApr {
 

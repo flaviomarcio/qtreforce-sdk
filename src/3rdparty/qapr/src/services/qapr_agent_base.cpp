@@ -1,6 +1,6 @@
 #include "./qapr_agent_base.h"
 #include "./qapr_agent.h"
-#include "./qapr_application.h"
+#include "../application/qapr_application.h"
 #include <QTimer>
 #include <QCryptographicHash>
 #include <QVariant>

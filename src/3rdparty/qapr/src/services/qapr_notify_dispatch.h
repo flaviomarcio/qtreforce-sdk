@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QObject>
-#include "./qapr_global.h"
+#include "../application/qapr_global.h"
 
 namespace QApr{
 

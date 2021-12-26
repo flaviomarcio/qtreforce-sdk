@@ -1,5 +1,5 @@
 #include "./qapr_session_credential.h"
-#include "./qstm_util_variant.h"
+#include "../../qstm/src/qstm_util_variant.h"
 
 #define dPvt()\
         auto&p = *reinterpret_cast<CredentialsPvt*>(this->p)

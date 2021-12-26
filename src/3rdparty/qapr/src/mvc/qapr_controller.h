@@ -1,10 +1,10 @@
 #pragma once
 
-#include "./qapr_global.h"
-#include "./qstm_macro.h"
-#include "./qorm_controller.h"
-#include "./qrpc_listen_request.h"
-#include "./qrpc_service_setting.h"
+#include "../../qstm/src/qstm_macro.h"
+#include "../../qorm/src/qorm_controller.h"
+#include "../../qrpc/src/qrpc_listen_request.h"
+#include "../../qrpc/src/qrpc_service_setting.h"
+#include "./application/qapr_global.h"
 #include <QUuid>
 
 namespace QApr {

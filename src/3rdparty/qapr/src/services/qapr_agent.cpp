@@ -1,5 +1,5 @@
 #include "./qapr_agent.h"
-#include "./qapr_application.h"
+#include "../application/qapr_application.h"
 #include "./qapr_agent_base.h"
 #include <QMultiHash>
 #include <QMutex>

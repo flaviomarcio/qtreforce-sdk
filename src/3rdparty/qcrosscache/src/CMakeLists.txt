@@ -21,6 +21,8 @@ else()
     add_library(crosscache SHARED ${crosscache_SRCS})
 endif()
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 target_link_libraries(
     crosscache # cmake-format: sortable
 )

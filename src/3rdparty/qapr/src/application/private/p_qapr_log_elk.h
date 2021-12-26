@@ -2,7 +2,7 @@
 
 #include <QObject>
 #include <QJsonDocument>
-#include "./qapr_global.h"
+#include "../../application/qapr_global.h"
 
 namespace QApr {
 

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "./qapr_interface_base.h"
-#include "./qapr_session.h"
-#include <QSqlDatabase>
+#include "../sessions/qapr_session.h"
+#include <QtSql/QSqlDatabase>
 
 const static QVariantHash flags_connection_db_ignore{{qsl("connection_db_ignore"), true}};
 const static QVariantHash flags_connection_db_transaction{{qsl("connection_db_transaction"), true}};

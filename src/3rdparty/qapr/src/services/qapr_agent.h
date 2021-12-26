@@ -2,11 +2,11 @@
 
 #include <QObject>
 #include <QThread>
-#include "./qapr_global.h"
-#include "./qrpc_service_manager.h"
-#include "./qorm_connection_manager.h"
-#include "./qapr_consts.h"
-#include "./qapr_agent_base.h"
+#include "../application/qapr_global.h"
+#include "../../../qrpc/src/qrpc_service_manager.h"
+#include "../../../qorm/src/qorm_connection_manager.h"
+#include "../application/qapr_consts.h"
+#include "../services/qapr_agent_base.h"
 
 
 #define DECLARE_AGENT_SCHEDULE(AgentClass, methodName)\

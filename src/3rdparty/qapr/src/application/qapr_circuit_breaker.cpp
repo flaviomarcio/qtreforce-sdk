@@ -1,5 +1,5 @@
 #include "./private/p_qapr_circuit_breaker.h"
-#include "./qstm_util_variant.h"
+#include "../../qstm/src/qstm_util_variant.h"
 
 #define dPvt()\
     auto&p = *reinterpret_cast<CircuitBreakerPvt*>(this->p)

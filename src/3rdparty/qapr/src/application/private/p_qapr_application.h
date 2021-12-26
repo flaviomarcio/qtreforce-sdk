@@ -5,7 +5,7 @@
 #include <QTimer>
 #include <QDir>
 #include <QMutex>
-#include "./qapr_application.h"
+#include "../qapr_application.h"
 
 namespace QApr {
 
@@ -22,7 +22,8 @@ public:
     QVariantHash __arguments;
     QRpc::ServiceManager manager;
     Application*application=nullptr;
-    explicit ApplicationPvt(Application*parent=nullptr):QObject(parent),circuitBreaker(parent){
+    explicit ApplicationPvt(Application*parent=nullptr):QObject(parent),circuitBreaker(parent)
+    {
         if(applicationSettingDir.isEmpty())
             applicationSettingDir=qsl("%1/%2").arg(settings_HOME_DIR, qApp->applicationName().toLower());
         this->application=parent;

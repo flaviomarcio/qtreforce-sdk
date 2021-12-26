@@ -1,14 +1,15 @@
 #include "./qapr_util_message.h"
-#include "./qapr_application.h"
-#include "./qstm_message.h"
-#include "./qrpc_request.h"
+#include "../application/qapr_application.h"
+#include "../../qstm/src/qstm_message.h"
+#include "../../qrpc/src/qrpc_request.h"
 
 namespace QApr {
 
 //enum MessageType{dsMail=1, dsSms=2, dsPushNotification=4, dsTelegram=8, dsWhatsApp=16};
 
 
-static bool sendMessage(const QRpc::ServiceSetting &setting, const QVariant&vMsg){
+static bool sendMessage(const QRpc::ServiceSetting &setting, const QVariant&vMsg)
+{
 
     QRpc::QRPCRequest request;
     request=setting;

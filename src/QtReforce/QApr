@@ -1,0 +1,34 @@
+//applications
+#include "../3rdparty/qapr/src/application/qapr_consts.h"
+#include "../3rdparty/qapr/src/application/qapr_global.h"
+#include "../3rdparty/qapr/src/application/qapr_log.h"
+#include "../3rdparty/qapr/src/application/qapr_circuit_breaker.h"
+#include "../3rdparty/qapr/src/application/qapr_runnable.h"
+#include "../3rdparty/qapr/src/application/qapr_mainservice.h"
+#include "../3rdparty/qapr/src/application/qapr_application.h"
+
+//services
+#include "../3rdparty/qapr/src/services/qapr_notify.h"
+#include "../3rdparty/qapr/src/services/qapr_notify_base.h"
+#include "../3rdparty/qapr/src/services/qapr_notify_dispatch.h"
+#include "../3rdparty/qapr/src/services/qapr_agent.h"
+#include "../3rdparty/qapr/src/services/qapr_agent_base.h"
+#include "../3rdparty/qapr/src/services/qapr_server.h"
+
+//session
+#include "../3rdparty/qapr/src/sessions/qapr_session.h"
+#include "../3rdparty/qapr/src/sessions/qapr_session_credential.h"
+
+//interfaces
+#include "../3rdparty/qapr/src/interfaces/qapr_interface_base.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_menu_object.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_interface_database.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_interface_backoffice.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_interface.h"
+
+//mvc
+#include "../3rdparty/qapr/src/mvc/qapr_controller.h"
+#include "../3rdparty/qapr/src/mvc/qapr_controller_backoffice.h"
+
+//util
+#include "../3rdparty/qapr/src/util/qapr_util_message.h"

@@ -1,0 +1,15 @@
+[submodule "src/3rdparty/qcrosscache"]
+	path = src/3rdparty/qcrosscache
+	url = git@github.com:flaviomarcio/qcrosscache.git
+[submodule "src/3rdparty/qstm"]
+	path = src/3rdparty/qstm
+	url = git@github.com:flaviomarcio/qstm.git
+[submodule "src/3rdparty/qapr"]
+	path = src/3rdparty/qapr
+	url = git@github.com:flaviomarcio/qapr.git
+[submodule "src/3rdparty/qorm"]
+	path = src/3rdparty/qorm
+	url = git@github.com:flaviomarcio/qorm.git
+[submodule "src/3rdparty/qrpc"]
+	path = src/3rdparty/qrpc
+	url = git@github.com:flaviomarcio/qrpc.git

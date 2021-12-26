@@ -1,1 +1,6 @@
-#include "./src/3rdparty/qapr/src/application/qapr_mainservice.h"
+#include "./QJsonWebToken"
+#include "./QStm"
+#include "./QOrm"
+#include "./QRpc"
+#include "./QApr"
+#include "./QCrossCache"

@@ -1,5 +1,5 @@
-INCLUDEPATH+=$$PWD
-INCLUDEPATH+=$$PWD/src
+#INCLUDEPATH+=$$PWD
+#INCLUDEPATH+=$$PWD/src
 
 include($$PWD/src/3rdparty/qjsonwebtoken/qjsonwebtoken.pri)
 include($$PWD/src/3rdparty/qtokenutil/qtokenutil.pri)

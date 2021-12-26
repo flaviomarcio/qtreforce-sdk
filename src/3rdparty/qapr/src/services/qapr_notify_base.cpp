@@ -15,9 +15,8 @@ namespace QApr{
 class NotifyBasePvt:public QObject{
 public:
     NotifyBase*parent=nullptr;
-    Q_DECLARE_VU;
-    explicit NotifyBasePvt(NotifyBase*parent=nullptr):QObject(parent)
-    {
+    VariantUtil vu;
+    explicit NotifyBasePvt(NotifyBase*parent=nullptr):QObject(parent){
         this->parent=parent;
     }
 };
@@ -41,10 +40,13 @@ QRpc::ServiceSetting &NotifyBase::notifySetting()
     auto&manager=Application::instance().manager();
     auto notifyName=this->notifyName();
     auto&setting=manager.setting(notifyName);
-    if(setting.enabled())
+    if(!setting.enabled()){
+        static QRpc::ServiceSetting __default;
+        return __default;
+    }
+    else{
         return setting;
-    static QRpc::ServiceSetting __default;
-    return __default;
+    }
 }
 
 void NotifyBase::run()
@@ -56,12 +58,11 @@ void NotifyBase::run()
 
 void NotifyBase::start()
 {
-    if(!this->notifySetting().enabled())
-        return;
-
-    QThread::start();
-    while(this->eventDispatcher()==nullptr)
-        QThread::msleep(1);
+    if(this->notifySetting().enabled()){
+        QThread::start();
+        while(this->eventDispatcher()==nullptr)
+            QThread::msleep(1);
+    }
 }
 
 QString NotifyBase::notifyName() const
@@ -83,8 +84,7 @@ const QVariant NotifyBase::settings_SERVER()
     return QApr::Application::instance().settings_SERVER();
 }
 
-void NotifyBase::onNotifyReceived(const QString &channel, const QVariant &payload)
-{
+void NotifyBase::onNotifyReceived(const QString &channel, const QVariant &payload){
     dPvt();
     Q_UNUSED(channel)
     auto metaObject=this->metaObject();

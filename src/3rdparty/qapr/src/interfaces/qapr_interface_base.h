@@ -1,7 +1,7 @@
 #pragma once
 
-#include "./qapr_consts.h"
-#include "./qapr_global.h"
+#include "./application/qapr_consts.h"
+#include "./application/qapr_global.h"
 #include "./qorm_object_db.h"
 #include "./qrpc_interface_record.h"
 #include <QSqlDatabase>
@@ -27,7 +27,7 @@ public:
     //!
     //! \brief ~InterfaceBase
     //!
-    Q_INVOKABLE ~InterfaceBase();
+    ~InterfaceBase();
 
 private:
     void *p = nullptr;

@@ -13,26 +13,23 @@ public:
     Controller*parent=nullptr;
     InterfaceDatabase*request_=nullptr;
     QVariantHash accountModel;
-    explicit ControllerPvt(Controller*parent)
-    {
+    explicit ControllerPvt(Controller*parent){
         this->parent=parent;
     }
-    virtual ~ControllerPvt()
-    {
+    virtual ~ControllerPvt(){
     }
 
-    InterfaceDatabase*request()
-    {
-        if(this->request_!=nullptr)
-            return this->request_;
-        QObject*__parent=this->parent;
-        while(__parent!=nullptr){
-            if(!__parent->metaObject()->inherits(&InterfaceBase::staticMetaObject))
-                continue;
-            request_=dynamic_cast<InterfaceDatabase*>(__parent);
-            if(request_!=nullptr)
-                break;
-            __parent=__parent->parent();
+    InterfaceDatabase*request(){
+        if(this->request_==nullptr){
+            QObject*__parent=this->parent;
+            while(__parent!=nullptr){
+                if(__parent->metaObject()->inherits(&InterfaceBase::staticMetaObject)){
+                    request_=dynamic_cast<InterfaceDatabase*>(__parent);
+                    if(request_!=nullptr)
+                        break;
+                }
+                __parent=__parent->parent();
+            }
         }
         return this->request_;
     }

@@ -16,31 +16,6 @@
 #include "./qstm_util_variant.h"
 #include "./qapr_server.h"
 #include "./qrpc_listen_protocol.h"
-#include "./qorm_test.h"
-
-template <class T=QRpc::QRPCRequest>
-bool Q_APR_CRUD_CHECK_FUNC(T*request, const QByteArray&method, const QVariant&body)
-{
-    request->setBody(body);
-    auto&response=request->call(QRpc::Get, method);
-    EXPECT_TRUE(response.isOk());
-    if(!response.isOk())
-        return false;
-    auto ___hash=response.bodyHash();
-    for(auto&property:Q_ORM_CRUD_PROPERTY_LIST){
-        if(!___hash.contains(property))
-            return false;
-    }
-    return true;
-}
-
-#define Q_APR_CRUD_CHECK(__CLASS__, __REQUEST__, __METHOD__, __BODY__)          \
-TEST_F(__CLASS__, crud_##__METHOD__){                                           \
-        __REQUEST__(request);                                                   \
-        auto __return=Q_APR_CRUD_CHECK_FUNC(&request, #__METHOD__, __BODY__ );  \
-        EXPECT_TRUE(__return);                                                  \
-}
-
 
 namespace QApr{
 class SDKGoogleTest : public testing::Test{

@@ -43,6 +43,9 @@ public:
     //! \return
     //!
     virtual SessionCredential&credential();
+
+    void init();
+
 private:
     SessionCredential p_credential;
     QThread*session_thread=nullptr;

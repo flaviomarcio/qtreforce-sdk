@@ -10,6 +10,7 @@
 #include <QList>
 #include <QVariantList>
 #include <QVariantMap>
+#include "./qstm_types.h"
 #include "../qorm_sql_suitable_types.h"
 #include "./p_qorm_model_info.h"
 #include "./p_qorm_sql_suitable_parser_keywork.h"
@@ -27,7 +28,6 @@ class Q_ORM_EXPORT SqlParserCommand:public QVariant{
 public:
     explicit SqlParserCommand(const QVariant&v):QVariant(v)
     {
-
     }
 
     explicit SqlParserCommand():QVariant()
@@ -64,7 +64,6 @@ public:
 
     QVariantMap unionMapStartsWith(const QVariant&vKey, const QVariantMap&mapSrc)
     {
-
         QStringList lKey=qTypeId(vKey)==QMetaType_QStringList?vKey.toStringList():QStringList{vKey.toString()};
         QVariantMap mapDst;
         QVariantMap mapUni;
@@ -119,7 +118,8 @@ public:
         return _____zzzzz_uuid==0?qsl_null:delim+QString::number(this->_____zzzzz_uuid).rightJustified(11,'0');
     }
 
-    QVariant makeUuid(){
+    QVariant makeUuid()
+    {
         this->_____zzzzz_uuid=++sequence_zzzz;
         return this->_____zzzzz_uuid;
     }
@@ -182,8 +182,7 @@ public:
         return !this->mapPointer.isEmpty();
     }
 
-    virtual void m()
-    {
+    virtual void m(){
         this->make();
     }
 
@@ -192,7 +191,8 @@ public:
         this->make(v);
     }
 
-    virtual void make(){
+    virtual void make()
+    {
         this->make(QVariant());
     }
 
@@ -202,45 +202,44 @@ public:
 
     virtual bool makeObject()
     {
-        bool __return=false;
-        if(!this->mapPointer.isEmpty()){
-            VariantUtil u;
-            auto vThis=this->toMap();
-            QMapIterator<QString, SqlParserCommand*> i(this->mapPointer);
-            int seq=0;
-            while (i.hasNext()) {
-                i.next();
-                auto key=qsl("%1.%2").arg(i.key()).arg(++seq);
+        if(!this->mapPointer.isEmpty())
+            return false;
+        Q_DECLARE_VU;
+        auto vThis=this->toMap();
+        QMapIterator<QString, SqlParserCommand*> i(this->mapPointer);
+        int seq=0;
+        while (i.hasNext()) {
+            i.next();
+            auto key=qsl("%1.%2").arg(i.key()).arg(++seq);
 
-                if(i.value()!=nullptr){
-                    auto v=i.value();
-                    if(v==nullptr)
-                        continue;
-                    if(v!=this)v->makeObject();
-                    auto typeId=qTypeId(*v);
-                    if(QStmTypesVariantDictionary.contains(typeId)){
-                        auto map=v->toHash();
-                        vThis.insert(key, map);
-                        __return=true;
-                    }
+            if(i.value()==nullptr)
+                continue;
 
-                    if(typeId==QMetaType_User){
-                        vThis.insert(key, qv(*v));
-                        __return=true;
-                    }
-                }
+            auto v=i.value();
+            if(v==nullptr)
+                continue;
+
+            if(v!=this)
+                v->makeObject();
+            auto typeId=qTypeId(*v);
+            if(QStmTypesVariantDictionary.contains(typeId)){
+                auto map=v->toHash();
+                vThis.insert(key, map);
+                __return=true;
             }
-            this->setValue(vThis);
+
+            if(typeId==QMetaType_User){
+                vThis.insert(key, qv(*v));
+                __return=true;
+            }
         }
+        this->setValue(vThis);
         return __return;
     }
-
-
 
 private:
     SqlParserPointerMap mapPointer;
     qlonglong _____zzzzz_uuid=0;
-
     void ___clear()
     {
         auto values=this->mapPointer.values();
@@ -379,7 +378,8 @@ public:
         QVariantHash map;
 
         auto typeId=qTypeId(vValue);
-        if(QStmTypesVariantDictionary.contains(typeId)){
+        if(QStmTypesVariantDictionary.contains(typeId))
+        {
             auto map=vValue.toHash();
             if(!map.contains(qsl("uuid"))){
                 map.insert(qsl("uuid"),rMap.value(qsl("uuid")));
@@ -411,12 +411,15 @@ public:
         return r;
     }
 
+    /**
+     * @brief operator =
+     * @param value
+     */
     void operator=(const QVariant&value)
     {
         QVariant::setValue(value);
     }
-    KeywordObjectInfo info()const
-    {
+    KeywordObjectInfo info()const{
         auto v=this->toHash().value(qsl("info"));
         return KeywordObjectInfo(v.toInt());
     }
@@ -440,8 +443,7 @@ public:
 
     bool isList()const
     {
-        const auto&v=this->value();
-        switch (qTypeId(v)){
+        switch (qTypeId(this->value())){
         case QMetaType_QVariantList:
         case QMetaType_QStringList:
             return true;
@@ -452,8 +454,7 @@ public:
 
     bool isMap()const
     {
-        const auto&v=this->value();
-        switch (qTypeId(v)){
+        switch (qTypeId(this->value())){
         case QMetaType_QVariantMap:
         case QMetaType_QVariantHash:
             return true;
@@ -534,7 +535,8 @@ public:
         this->setValue(map);
     }
 
-    ~SqlParserField(){
+    ~SqlParserField()
+    {
     }
 
     virtual QString toFormat(SqlSuitableKeyWord &parser)const
@@ -606,7 +608,8 @@ public:
 
 class SqlParserValues:public SqlParserCommand{
 public:
-    explicit SqlParserValues(const QVariant&v=QVariant()):SqlParserCommand(v){
+    explicit SqlParserValues(const QVariant&v=QVariant()):SqlParserCommand(v)
+    {
     }
 
     SqlParserValues&value(const QVariant&v)
@@ -667,14 +670,13 @@ public:
     class SqlParserCondition: public SqlParserCommand{
     public:
         QString funcName;
-        QString sName()const{
+        QString sName()const
+        {
             return this->funcName+this->suuid(qsl("."));
         }
         explicit SqlParserCondition(const QVariant&v = QVariant()):SqlParserCommand(v)
         {
         }
-
-
         explicit SqlParserCondition(QString funcName, const QVariant&field, const QVariant&valueA, const QVariant&valueB, const KeywordOperator&keywordOperator, const KeywordLogical&keywordLogical):SqlParserCommand()
         {
             auto map=this->toHash();
@@ -777,8 +779,8 @@ public:
             return QStringList{qsl(" %1 %2").arg(kLogical, kOperator.isEmpty()?kOperator:(kOperator.arg(vValueA, vValueB))).trimmed()};
         }
 
-        virtual void defineFirst(
-            ){
+        virtual void defineFirst()
+        {
             auto map=this->toHash();
             map.insert(qsl("first"), true);
             this->setValue(map);
@@ -912,18 +914,22 @@ public:
     {
         return this->addCondition(new SqlParserCondition(__func__, valueA, valueB, KeywordOperator::koInOut, keywordLogical));
     }
-    auto&inOut(const QVariant&valueA,const KeywordLogical&keywordLogical=KeywordLogical::klAnd){
+    auto&inOut(const QVariant&valueA,const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
+    {
         auto valueB=SqlParserObject(qsl(":%1").arg(valueA.toString()));
         return this->addCondition(new SqlParserCondition(__func__, valueA, valueB, KeywordOperator::koInOut, keywordLogical));
     }
-    auto&isNull(const QVariant&valueA, const QVariant&valueB, const KeywordLogical&keywordLogical=KeywordLogical::klAnd){
+    auto&isNull(const QVariant&valueA, const QVariant&valueB, const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
+    {
         return this->addCondition(new SqlParserCondition(__func__, valueA, valueB, KeywordOperator::koIsNull, keywordLogical));
     }
-    auto&isNull(const QVariant&valueA, const KeywordLogical&keywordLogical=KeywordLogical::klAnd){
+    auto&isNull(const QVariant&valueA, const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
+    {
         auto valueB=SqlParserObject(qsl(":%1").arg(valueA.toString()));
         return this->addCondition(new SqlParserCondition(__func__, valueA, valueB, KeywordOperator::koIsNull, keywordLogical));
     }
-    auto&isNotNull(const QVariant&valueA, const QVariant&valueB, const KeywordLogical&keywordLogical=KeywordLogical::klAnd){
+    auto&isNotNull(const QVariant&valueA, const QVariant&valueB, const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
+    {
         return this->addCondition(new SqlParserCondition(__func__, valueA, valueB, KeywordOperator::koIsNotNull, keywordLogical));
     }
     auto&isNotNull(const QVariant&valueA, const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
@@ -937,10 +943,8 @@ public:
         case QMetaType_QDateTime:
         case QMetaType_QDate:
         case QMetaType_QTime:
-        {
             auto valueB=QDateTime(valueA.toDateTime().date(), QTime(23,59,59,998));
             return this->addCondition(new SqlParserCondition(__func__, field, valueA, valueB, KeywordOperator::koBetween, keywordLogical));
-        }
         default:
             return this->equal(field, valueA, keywordLogical);
         }
@@ -952,23 +956,20 @@ public:
 
     QStringList toScript(SqlSuitableKeyWord &parser)
     {
-
-        QStringList output;
-
         auto list = this->toList();
-
-        if(!list.isEmpty()){
-            output<<parser.parserCommand(KeywordCombine::kcWhere);
-            auto first=true;
-            for(auto&v:list){
-                auto map=v.toHash();
-                if(first){
-                    map.remove(qsl("keywordLogical"));
-                    first=false;
-                }
-                SqlParserCondition condition(map);
-                output<<condition.toScript(parser);
+        if(list.isEmpty())
+            return {};
+        QStringList output;
+        output<<parser.parserCommand(KeywordCombine::kcWhere);
+        auto first=true;
+        for(auto&v:list){
+            auto map=v.toHash();
+            if(first){
+                map.remove(qsl("keywordLogical"));
+                first=false;
             }
+            SqlParserCondition condition(map);
+            output<<condition.toScript(parser);
         }
         return output;
     }
@@ -1003,21 +1004,16 @@ public:
             this->funcName=funcName.toLower();
             this->parent=parent;
 
-            this->addConditions(combine, condition);
-        }
-
-        auto&addConditions(const KeywordCombine&combine, const QVariant&condition)
-        {
             auto map=this->toMap();
             map.insert(qsl("combine"),combine);
             if(combine==KeywordCombine::kcWhere){
                 this->setValue(map);
                 this->c().condition(condition);
-                return*this;
+                return;
             }
+
             map.insert(qsl("on"),condition);
             this->setValue(map);
-            return*this;
         }
 
         auto&makeOperator(const KeywordOperator&keywordOperator=KeywordOperator::koEqual)
@@ -1071,8 +1067,7 @@ public:
             this->c().in(valueA, valueB, keywordLogical);
             return*this;
         }
-        auto &in(const QVariant&valueA, const KeywordLogical&keywordLogical=KeywordLogical::klAnd)
-        {
+        auto &in(const QVariant&valueA, const KeywordLogical&keywordLogical=KeywordLogical::klAnd){
             this->c().in(valueA, keywordLogical);
             return*this;
         }
@@ -1266,7 +1261,8 @@ public:
         return*this;
     }
 
-    auto&where(){
+    auto&where()
+    {
         return this->where(QVariant());
     }
     auto&where(const QVariant&whereObject)
@@ -1282,9 +1278,6 @@ public:
         if(c==nullptr){
             c= new SqlParserCombination(__func__, this, KeywordCombine::kcWhere, whereObject);
             this->setPointer(c->sName(), c);
-        }
-        else{
-            c->addConditions(KeywordCombine::kcWhere, whereObject);
         }
         return c->condition();
     }
@@ -1419,7 +1412,8 @@ template <class T>
 class Q_ORM_EXPORT SqlParserFrom:public SqlParserCombinations<T>{
 public:
 
-    explicit SqlParserFrom(const QVariant&v=QVariant()):SqlParserCombinations<T>(v){
+    explicit SqlParserFrom(const QVariant&v=QVariant()):SqlParserCombinations<T>(v)
+    {
     }
     /**
      * @brief distinct

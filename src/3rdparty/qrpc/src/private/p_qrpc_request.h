@@ -84,7 +84,7 @@ namespace QRpc {
         }
     }
 
-    Q_COREAPP_STARTUP_FUNCTION(static_log_init_dir);
+    Q_COREAPP_STARTUP_FUNCTION(static_log_init_dir)
 
 #define dPvt()\
     auto&p =*reinterpret_cast<QRPCRequestPvt*>(this->p)
@@ -263,7 +263,7 @@ public:
         auto method=e.method();
         QMultiHash<QString,QVariant> paramsGet;
         if(method==QRpc::Head || method==QRpc::Get || method==QRpc::Delete || method==QRpc::Options){
-            Q_DECLARE_VU;
+            VariantUtil vu;
             paramsGet=vu.toMultiHash(vBody);
             vBody.clear();
             auto paramsGetOriginais = e.parameter();
@@ -342,7 +342,7 @@ public:
 
         QMultiHash<QString,QVariant> paramsGet;
         if(method==QRpc::Head || method==QRpc::Get || method==QRpc::Delete || method==QRpc::Options){
-            Q_DECLARE_VU;
+            VariantUtil vu;
             paramsGet=vu.toMultiHash(vBody);
             vBody.clear();
             auto paramsGetOriginais = e.parameter();

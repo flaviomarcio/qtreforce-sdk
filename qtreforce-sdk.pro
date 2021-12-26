@@ -3,7 +3,7 @@ CONFIG -= debug_and_release
 CONFIG += c++17
 CONFIG += silent
 
-TARGET = QRpc
+TARGET = QtReforceSDK
 TEMPLATE = lib
 
 include($$PWD/qtreforce-sdk.pri)

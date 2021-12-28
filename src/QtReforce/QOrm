@@ -29,3 +29,4 @@
 #include "../3rdparty/qorm/src/qorm_transaction_scope.h"
 #include "../3rdparty/qorm/src/qorm_types.h"
 #include "../3rdparty/qorm/src/qorm_wrapper.h"
+#include "../3rdparty/qorm/src/private/p_qorm_sql_suitable_parser_keywork.h"

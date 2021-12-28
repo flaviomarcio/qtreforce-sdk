@@ -9,10 +9,9 @@ include($$PWD/src/3rdparty/qorm/qorm.pri)
 include($$PWD/src/3rdparty/qrpc/qrpc.pri)
 include($$PWD/src/3rdparty/qapr/qapr.pri)
 
+INCLUDEPATH += $$PWD/src
 
 HEADERS+= \
-    $$PWD/src/QtReforce/QtReforceInclude \
-    $$PWD/src/QtReforce/QJsonWebToken \
     $$PWD/src/QtReforce/QStm \
     $$PWD/src/QtReforce/QOrm \
     $$PWD/src/QtReforce/QRpc \

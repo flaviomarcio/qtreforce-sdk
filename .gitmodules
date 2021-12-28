@@ -19,3 +19,6 @@
 [submodule "src/3rdparty/qjsonwebtoken"]
 	path = src/3rdparty/qjsonwebtoken
 	url = git@github.com:flaviomarcio/qjsonwebtoken.git
+[submodule "src/3rdparty/qtinyaes"]
+	path = src/3rdparty/qtinyaes
+	url = git@github.com:flaviomarcio/qtinyaes.git

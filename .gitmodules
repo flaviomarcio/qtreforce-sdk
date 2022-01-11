@@ -22,3 +22,9 @@
 [submodule "src/3rdparty/qtinyaes"]
 	path = src/3rdparty/qtinyaes
 	url = git@github.com:flaviomarcio/qtinyaes.git
+[submodule "src/3rdparty/qmetaui"]
+	path = src/3rdparty/qmetaui
+	url = git@github.com:flaviomarcio/qmetaui.git
+[submodule "src/3rdparty/qstatusbar"]
+	path = src/3rdparty/qstatusbar
+	url = git@github.com:flaviomarcio/qstatusbar.git

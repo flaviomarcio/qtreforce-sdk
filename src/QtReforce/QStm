@@ -19,3 +19,4 @@
 #include "../3rdparty/qstm/src/qstm_util_date.h"
 #include "../3rdparty/qstm/src/qstm_util_double.h"
 #include "../3rdparty/qstm/src/qstm_util_meta_object.h"
+#include "../3rdparty/qstm/src/qstm_fileinfo.h"

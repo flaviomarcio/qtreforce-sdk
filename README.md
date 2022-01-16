@@ -204,6 +204,6 @@ QMetaUi->>QtReforceSDK: Using request
 >Check documentation and examples
 >https://github.com/flaviomarcio/qcrosscache
 >
->## Using QML/class to create mobile application
+>## Using QML/Class to build mobile app
 >Check documentation and examples
 >https://github.com/flaviomarcio/qmetaui

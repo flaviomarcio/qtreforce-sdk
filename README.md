@@ -57,10 +57,14 @@ QMetaUi->>QtReforceSDK: Using request
 
 ## Prerequisits
 >```bash
-> mkdir myproject;
-> cd myproject;
+> mkdir -p myproject/3rdparty;
+> cd myproject/3rdparty;
+> 
 > git clone git@github.com:flaviomarcio/qtreforce-sdk.git
-> cd qtreforce-sdk;
+> //or
+> git submodule add git@github.com:flaviomarcio/qtreforce-sdk.git
+> 
+> cd myproject/3rdparty/qtreforce-sdk;
 > ./initrepository
 >```
 

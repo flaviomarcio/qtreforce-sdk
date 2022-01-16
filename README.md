@@ -184,13 +184,17 @@ QMetaUi->>QtReforceSDK: Using request
 
 ## Guide
 
+>## Basic utilities class, SettingManager, MetaObjectUtil, VariantUtil, FormattingUtil, DoubleUtil, DateUtil, 
+>Check documentation and examples
+>https://github.com/flaviomarcio/qstm
+>
 >## Using web-servers controls
 >Check documentation and examples
 >https://github.com/flaviomarcio/qrpc
 >
 >## Using MVC controls
 >Check documentation and examples
->https://github.com/flaviomarcio/qrpc
+>https://github.com/flaviomarcio/qorm
 >
 >## Using back-end and services using web-server's and MVC
 >Check documentation and examples

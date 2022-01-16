@@ -188,10 +188,14 @@ QMetaUi->>QtReforceSDK: Using request
 >Check documentation and examples
 >https://github.com/flaviomarcio/qrpc
 >
->>## Using back-end and services using web-server's and MVC
+>## Using back-end and services using web-server's and MVC
 >Check documentation and examples
 >https://github.com/flaviomarcio/qapr
 >
->>## Using cache strategy's
+>## Using cache strategy's
 >Check documentation and examples
 >https://github.com/flaviomarcio/qcrosscache
+>
+>## Using QML/class to create mobile application
+>Check documentation and examples
+>https://github.com/flaviomarcio/qmetaui

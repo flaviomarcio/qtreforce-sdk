@@ -28,3 +28,6 @@
 [submodule "src/3rdparty/qstatusbar"]
 	path = src/3rdparty/qstatusbar
 	url = git@github.com:flaviomarcio/qstatusbar.git
+[submodule "src/3rdparty/qmetaui-forms"]
+	path = src/3rdparty/qmetaui-forms
+	url = git@github.com:flaviomarcio/qmetaui-forms.git

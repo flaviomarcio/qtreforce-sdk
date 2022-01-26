@@ -4,7 +4,7 @@
 QTREFORCE_GIT_VERSION=$$system(git describe --always --abbrev=0)
 DEFINES+=QTREFORCE_GIT_VERSION
 
-message('QtReforce: git revision==' $$QTREFORCE_GIT_VERSION)
+#message('QtReforce: git revision==' $$QTREFORCE_GIT_VERSION)
 
 QTREFORCE_NO_QSTM{
 CONFIG+=QTREFORCE_NO_QRPC

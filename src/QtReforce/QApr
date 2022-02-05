@@ -15,16 +15,16 @@
 #include "../3rdparty/qapr/src/services/qapr_agent_base.h"
 #include "../3rdparty/qapr/src/services/qapr_server.h"
 
+
 //session
 #include "../3rdparty/qapr/src/sessions/qapr_session.h"
 #include "../3rdparty/qapr/src/sessions/qapr_session_credential.h"
 
 //interfaces
-#include "../3rdparty/qapr/src/interfaces/qapr_interface_base.h"
 #include "../3rdparty/qapr/src/interfaces/qapr_menu_object.h"
-#include "../3rdparty/qapr/src/interfaces/qapr_interface_database.h"
-#include "../3rdparty/qapr/src/interfaces/qapr_interface_backoffice.h"
 #include "../3rdparty/qapr/src/interfaces/qapr_interface.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_interface_backoffice.h"
+#include "../3rdparty/qapr/src/interfaces/qapr_interface_maintence.h"
 
 //mvc
 #include "../3rdparty/qapr/src/mvc/qapr_controller.h"

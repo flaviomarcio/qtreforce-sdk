@@ -31,3 +31,6 @@
 [submodule "src/3rdparty/qmetaui-forms"]
 	path = src/3rdparty/qmetaui-forms
 	url = git@github.com:flaviomarcio/qmetaui-forms.git
+[submodule "src/3rdparty/qapidoc"]
+	path = src/3rdparty/qapidoc
+	url = git@github.com:flaviomarcio/qapidoc.git

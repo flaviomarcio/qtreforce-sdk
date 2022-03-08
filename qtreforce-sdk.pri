@@ -10,6 +10,7 @@ QTREFORCE_NO_QSTM{
 CONFIG+=QTREFORCE_NO_QRPC
 CONFIG+=QTREFORCE_NO_QORM
 CONFIG+=QTREFORCE_NO_QAPR
+CONFIG+=QTREFORCE_NO_QAPIDOC
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QRPC')
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
@@ -40,6 +41,10 @@ HEADERS+= $$PWD/src/QtReforce/QRpc
 !CONFIG(QTREFORCE_NO_QAPR){
 include($$PWD/src/3rdparty/qapr/qapr.pri)
 HEADERS+= $$PWD/src/QtReforce/QApr
+}
+!CONFIG(QTREFORCE_NO_QAPIDOC){
+include($$PWD/src/3rdparty/qapidoc/qapidoc.pri)
+HEADERS+= $$PWD/src/QtReforce/QApiDoc
 }
 
 INCLUDEPATH += $$PWD/src

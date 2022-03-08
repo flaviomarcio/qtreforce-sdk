@@ -10,6 +10,7 @@
 #include "../3rdparty/qstm/src/qstm_setting_base.h"
 #include "../3rdparty/qstm/src/qstm_svm.h"
 #include "../3rdparty/qstm/src/qstm_types.h"
+#include "../3rdparty/qstm/src/qstm_meta_types.h"
 #include "../3rdparty/qstm/src/qstm_currency.h"
 #include "../3rdparty/qstm/src/qstm_vvm.h"
 #include "../3rdparty/qstm/src/qstm_url.h"

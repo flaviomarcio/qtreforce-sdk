@@ -34,3 +34,6 @@
 [submodule "src/3rdparty/qapidoc"]
 	path = src/3rdparty/qapidoc
 	url = git@github.com:flaviomarcio/qapidoc.git
+[submodule "src/3rdparty/qnotation"]
+	path = src/3rdparty/qnotation
+	url = git@github.com:flaviomarcio/qnotation.git

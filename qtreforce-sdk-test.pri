@@ -7,7 +7,9 @@ message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
 message('QtReforce: QTREFORCE_NO_QAPR auto declare : QTREFORCE_NO_QAPR')
 }
 
-
+!CONFIG(QTREFORCE_NO_QNOTATION){
+include($$PWD/src/3rdparty/qnotation/qnotation.pri)
+}
 !CONFIG(QTREFORCE_NO_QJSONWEBTOKEN){
 include($$PWD/src/3rdparty/qjsonwebtoken/qjsonwebtoken.pri)
 }

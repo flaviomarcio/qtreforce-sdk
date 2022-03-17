@@ -15,6 +15,10 @@ message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
 }
 
+!CONFIG(QTREFORCE_NO_QNOTATION){
+include($$PWD/src/3rdparty/qnotation/qnotation.pri)
+HEADERS+= $$PWD/src/QtReforce/QNotation
+}
 !CONFIG(QTREFORCE_NO_QJSONWEBTOKEN){
 include($$PWD/src/3rdparty/qjsonwebtoken/qjsonwebtoken.pri)
 }
@@ -47,6 +51,9 @@ HEADERS+= $$PWD/src/QtReforce/QApiDoc
 }
 
 INCLUDEPATH += $$PWD/src
+
+DISTFILES += \
+    $$PWD/src/QtReforce/QNotation
 
 
 

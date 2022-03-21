@@ -12,7 +12,7 @@ CONFIG+=QTREFORCE_NO_QORM
 CONFIG+=QTREFORCE_NO_QAPR
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QRPC')
 message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
-message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
+message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QAPR')
 }
 
 !CONFIG(QTREFORCE_NO_QNOTATION){

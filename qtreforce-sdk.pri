@@ -1,5 +1,4 @@
-#INCLUDEPATH+=$$PWD
-#INCLUDEPATH+=$$PWD/src
+INCLUDEPATH+=$$PWD/src/includes/desktop
 
 QTREFORCE_GIT_VERSION=$$system(git describe --always --abbrev=0)
 DEFINES+=QTREFORCE_GIT_VERSION
@@ -17,7 +16,7 @@ message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QAPR')
 
 !CONFIG(QTREFORCE_NO_QNOTATION){
 include($$PWD/src/3rdparty/qnotation/qnotation.pri)
-HEADERS+= $$PWD/src/QtReforce/QNotation
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QNotation
 }
 !CONFIG(QTREFORCE_NO_QJSONWEBTOKEN){
 include($$PWD/src/3rdparty/qjsonwebtoken/qjsonwebtoken.pri)
@@ -27,33 +26,33 @@ include($$PWD/src/3rdparty/qtokenutil/qtokenutil.pri)
 }
 !CONFIG(QTREFORCE_NO_QCROSSCACHE){
 include($$PWD/src/3rdparty/qcrosscache/qcrosscache.pri)
-HEADERS+= $$PWD/src/QtReforce/QCrossCache
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QCrossCache
 }
 !CONFIG(QTREFORCE_NO_QSTM){
 include($$PWD/src/3rdparty/qstm/qstm.pri)
-HEADERS+= $$PWD/src/QtReforce/QStm
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QStm
 }
 !CONFIG(QTREFORCE_NO_QORM){
 include($$PWD/src/3rdparty/qorm/qorm.pri)
-HEADERS+= $$PWD/src/QtReforce/QOrm
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QOrm
 }
 !CONFIG(QTREFORCE_NO_QRPC){
 include($$PWD/src/3rdparty/qrpc/qrpc.pri)
-HEADERS+= $$PWD/src/QtReforce/QRpc
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QRpc
 }
 !CONFIG(QTREFORCE_NO_QAPR){
 include($$PWD/src/3rdparty/qapr/qapr.pri)
-HEADERS+= $$PWD/src/QtReforce/QApr
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QApr
 }
 !CONFIG(QTREFORCE_NO_QAPIDOC){
 include($$PWD/src/3rdparty/qapidoc/qapidoc.pri)
-HEADERS+= $$PWD/src/QtReforce/QApiDoc
+HEADERS+= $$PWD/src/includes/desktop/QtReforce/QApiDoc
 }
 
 INCLUDEPATH += $$PWD/src
 
 DISTFILES += \
-    $$PWD/src/QtReforce/QNotation
+    $$PWD/src/includes/desktop/QtReforce/QNotation
 
 
 

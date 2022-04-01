@@ -1,1 +1,1 @@
-#include "../3rdparty/qnotation/src/qnotation.h"
+#include "../../3rdparty/qnotation/src/qnotation.h"

@@ -1,1 +1,1 @@
-#include "../3rdparty/qapidoc/src/qapidoc.h"
+#include "../../3rdparty/qapidoc/src/qapidoc.h"

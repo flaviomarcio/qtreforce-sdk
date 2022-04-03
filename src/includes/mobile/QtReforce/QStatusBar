@@ -1,1 +1,1 @@
-#include "../3rdparty/qstatusbar/statusbar.pri"
+#include "../../3rdparty/qstatusbar/statusbar.h"

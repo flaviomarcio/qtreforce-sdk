@@ -7,8 +7,12 @@ message('QtReforce: QTREFORCE_NO_QSTM auto declare : QTREFORCE_NO_QORM')
 message('QtReforce: QTREFORCE_NO_QAPR auto declare : QTREFORCE_NO_QAPR')
 }
 
+LIBS += -lgmock
+LIBS += -lgtest
+
 !CONFIG(QTREFORCE_NO_QNOTATION){
 include($$PWD/src/3rdparty/qnotation/qnotation.pri)
+HEADERS+= $$PWD/src/test/QtReforce/QNotation
 }
 !CONFIG(QTREFORCE_NO_QJSONWEBTOKEN){
 include($$PWD/src/3rdparty/qjsonwebtoken/qjsonwebtoken.pri)
@@ -37,8 +41,13 @@ include($$PWD/src/3rdparty/qapr/test/qapr-test.pri)
 HEADERS+= $$PWD/src/test/QtReforce/QApr
 }
 !CONFIG(QTREFORCE_NO_QAPIDOC){
-include($$PWD/src/3rdparty/qapidoc/test/qapidoc-test.pri)
+include($$PWD/src/3rdparty/qapidoc/qapidoc.pri)
 HEADERS+= $$PWD/src/test/QtReforce/QApiDoc
 }
 
+INCLUDEPATH += $$PWD/src
 INCLUDEPATH += $$PWD/src/test
+
+DISTFILES += \
+    $$PWD/src/test/QtReforce/QNotation
+

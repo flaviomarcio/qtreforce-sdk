@@ -1,1 +1,3 @@
+#ifdef QTREFORCE_QAPIDOC
 #include "../../3rdparty/qapidoc/src/qapidoc.h"
+#endif

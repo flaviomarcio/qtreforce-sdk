@@ -54,10 +54,7 @@ include($$PWD/src/3rdparty/qmetaui/src/v1/qmetaui.pri)
 HEADERS+= $$PWD/src/includes/mobile/QtReforce/QMetaUi
 }
 
-INCLUDEPATH += $$PWD/src
-
-DISTFILES += \
-    $$PWD/src/includes/mobile/QtReforce/QNotation
-
-
-
+!CONFIG(QTREFORCE_NO_QMEF){
+include($$PWD/src/3rdparty/qmfe/qmfe-frontend.pri)
+HEADERS+= $$PWD/src/includes/mobile/QtReforce/QMfe
+}

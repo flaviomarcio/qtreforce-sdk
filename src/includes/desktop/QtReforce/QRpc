@@ -1,1 +1,3 @@
+#ifdef QTREFORCE_QRPC
 #include "../../3rdparty/qrpc/src/qrpc.h"
+#endif

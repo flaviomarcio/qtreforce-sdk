@@ -1,3 +1,6 @@
+INCLUDEPATH += $$PWD/src
+INCLUDEPATH += $$PWD/src/test
+
 QTREFORCE_NO_QSTM{
 CONFIG+=QTREFORCE_NO_QRPC
 CONFIG+=QTREFORCE_NO_QORM
@@ -9,6 +12,7 @@ message('QtReforce: QTREFORCE_NO_QAPR auto declare : QTREFORCE_NO_QAPR')
 
 LIBS += -lgmock
 LIBS += -lgtest
+
 
 !CONFIG(QTREFORCE_NO_QNOTATION){
 include($$PWD/src/3rdparty/qnotation/qnotation.pri)
@@ -44,10 +48,8 @@ HEADERS+= $$PWD/src/test/QtReforce/QApr
 include($$PWD/src/3rdparty/qapidoc/qapidoc.pri)
 HEADERS+= $$PWD/src/test/QtReforce/QApiDoc
 }
-
-INCLUDEPATH += $$PWD/src
-INCLUDEPATH += $$PWD/src/test
-
-DISTFILES += \
-    $$PWD/src/test/QtReforce/QNotation
+!CONFIG(QTREFORCE_NO_QMFE){
+include($$PWD/src/3rdparty/qmfe/qmfe-server.pri)
+HEADERS+= $$PWD/src/test/QtReforce/QMfe
+}
 

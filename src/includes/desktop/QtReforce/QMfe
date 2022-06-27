@@ -1,0 +1,4 @@
+#ifdef QTREFORCE_QMFE
+#include "../../3rdparty/qmfe/src/v1/server/include/QMfe"
+#endif
+

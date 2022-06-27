@@ -1,1 +1,3 @@
+#ifdef QTREFORCE_QCROSSCACHE
 #include "../../3rdparty/qcrosscache/src/qcrosscache.h"
+#endif

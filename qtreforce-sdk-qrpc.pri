@@ -23,10 +23,4 @@ include($$PWD/src/3rdparty/qrpc/qrpc.pri)
 HEADERS+= $$PWD/src/includes/desktop/QtReforce/QRpc
 }
 
-INCLUDEPATH += $$PWD/src
-
-DISTFILES += \
-    $$PWD/src/includes/desktop/QtReforce/QNotation
-
-
 

@@ -1,2 +1,4 @@
 //applications
+#ifdef QTREFORCE_QAPR
 #include "../../../3rdparty/qapr/src/application/qapr.h"
+#endif

@@ -1,1 +1,3 @@
+#ifdef QTREFORCE_QSTM
 #include "../../3rdparty/qstm/src/qstm.h"
+#endif

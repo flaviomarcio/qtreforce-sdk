@@ -1,1 +1,3 @@
+#ifdef QTREFORCE_QORM
 #include "../../3rdparty/qorm/src/qorm.h"
+#endif

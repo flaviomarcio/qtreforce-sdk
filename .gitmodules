@@ -37,3 +37,6 @@
 [submodule "src/3rdparty/qnotation"]
 	path = src/3rdparty/qnotation
 	url = git@github.com:flaviomarcio/qnotation.git
+[submodule "src/3rdparty/erp-console"]
+	path = src/3rdparty/erp-console
+	url = git@github.com:flaviomarcio/erp-console.git

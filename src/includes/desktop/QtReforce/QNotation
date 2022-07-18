@@ -1,3 +1,0 @@
-#ifdef QTREFORCE_QNOTATION
-#include "../../3rdparty/qnotation/src/qnotation.h"
-#endif

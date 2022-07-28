@@ -6,7 +6,7 @@ CONFIG += silent
 TARGET = QtReforceSDK
 TEMPLATE = lib
 
-INCLUDEPATH += $PWD/src
+INCLUDEPATH += $$PWD/src
 
 include($$PWD/qtreforce-sdk.pri)
 

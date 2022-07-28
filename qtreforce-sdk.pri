@@ -1,3 +1,6 @@
+QTREFORCE_SDK=true
+DEFINES+=QTREFORCE_SDK
+
 INCLUDEPATH += $$PWD/src
 exists($$PWD/src/includes/desktop){
 INCLUDEPATH+=$$PWD/src/includes/desktop
